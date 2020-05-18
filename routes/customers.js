@@ -35,6 +35,7 @@ customer = await customer.save();
 res.send(customer);
 });
 
+// UPDATE REQUEST HANDLER
 router.put('/:id', async (req, res) => {
     const result = validateInput(req.body);
     if(result.error){
