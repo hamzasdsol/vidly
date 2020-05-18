@@ -1,16 +1,7 @@
 const express = require('express');
-const Joi = require('joi');
 const router = express.Router();
 const mongoose = require('mongoose');
-
-// Genre Document Schema
-const Genre = mongoose.model('Genre', new mongoose.Schema({
-    name : {
-        type: String,
-        minlength: 5,
-        maxlength: 15,
-    }
-}));
+const { Genre , validateInput } = require('../models/genre');
 
 // GET REQUEST HANDLER
 router.get('/', async(req, res) => {
@@ -64,13 +55,5 @@ router.delete('/:id', async (req, res) => {
 
     res.send('Deleted')
 });
-
-// Input Validation
-function validateInput(genre) {
-    const schema = {
-        name: Joi.string().min(3).required()
-    };
-    return Joi.validate(genre, schema);
-}
 
 module.exports = router;
