@@ -6,6 +6,7 @@ const { Rental, validate } = require('../models/rental');
 const {Customer} = require('../models/customer');
 const {Movie} = require('../models/movie');
 Fawn.init(mongoose);
+
 // GET REQUEST HANDLER
 router.get('/', async(req, res) => {
     const rentals = await Rental.find().sort({ dateOut : -1}).lean();
