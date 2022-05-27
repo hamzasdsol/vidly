@@ -4,22 +4,27 @@
   "description": "self Learning Project of Node js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engine": {
+    "node": "16.15.0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "fawn": "^2.1.5",
-    "helmet": "^3.22.0",
+    "helmet": "^3.23.3",
     "joi": "^14.3.1",
     "joi-objectid": "^3.0.1",
+    "mongodb": "^4.6.0",
     "mongoose": "^5.9.14",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.16"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hamzasdsol/vidly.git"

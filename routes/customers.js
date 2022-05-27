@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
-const { Customer, validateInput} = require('../models/customer');
+const { Customer, validateInput } = require('../models/customer');
 
 // GET REQUEST HANDLER
-router.get('/' , async (req, res) => {
+router.get('/', async (req, res) => {
     const customers = await Customer.find().sort('name');
     res.send(customers);
 });
@@ -17,39 +17,39 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST REQUEST HANDLER
-router.post('/' , async (req,res) => {
-const result = validateInput(req.body);
-if (result.error) {
-    // Bad Request = 400
-    res.status(400).send(result.error.details[0].message);
-    return;
-}
+router.post('/', async (req, res) => {
+    const result = validateInput(req.body);
+    if (result.error) {
+        // Bad Request = 400
+        res.status(400).send(result.error.details[0].message);
+        return;
+    }
 
-let customer = new Customer({
-    isGold: req.body.isGold,
-    name: req.body.name,
-    phone: req.body.phone
-});
+    let customer = new Customer({
+        isGold: req.body.isGold,
+        name: req.body.name,
+        phone: req.body.phone
+    });
 
-customer = await customer.save();
-res.send(customer);
+    customer = await customer.save();
+    res.send(customer);
 });
 
 // UPDATE REQUEST HANDLER
 router.put('/:id', async (req, res) => {
     const result = validateInput(req.body);
-    if(result.error){
+    if (result.error) {
         // Bad Request
         res.status(400).send(result.error.details[0].message);
         return;
     }
 
-    const customer = await Customer.findByIdAndUpdate(req.params.id, 
+    const customer = await Customer.findByIdAndUpdate(req.params.id,
         {
-            isGold : req.body.isGold,
+            isGold: req.body.isGold,
             name: req.body.name,
             phone: req.body.phone
-    }, {new: true});
+        }, { new: true });
     res.send(customer);
 });
 
