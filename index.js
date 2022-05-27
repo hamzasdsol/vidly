@@ -14,7 +14,7 @@ app.use('/api/customers', customers);
 app.use('/api/movies', movies);
 app.use('/api/rentals', rentals);
 
-const DB = 'mongodb+srv://vidlyuser:Sdsol99!@cluster0.jhslu.mongodb.net/test?retryWrites=true&w=majority'
+const DB = 'mongodb+srv://vidlyuser:Sdsol99@cluster0.jhslu.mongodb.net/test?retryWrites=true&w=majority'
 
 
 mongoose.connect(DB, {
