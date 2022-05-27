@@ -14,7 +14,14 @@ app.use('/api/customers', customers);
 app.use('/api/movies', movies);
 app.use('/api/rentals', rentals);
 
-mongoose.connect('mongodb://localhost/vidly')
+const DB = 'mongodb+srv://vidlyuser:Sdsol99!@cluster0.jhslu.mongodb.net/test?retryWrites=true&w=majority'
+
+
+mongoose.connect(DB, {
+    usedNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+})
     .then(() => {
         console.log('Connected to MongoDB');
     }).catch(err => {
