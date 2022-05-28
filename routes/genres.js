@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const { Genre , validateInput } = require('../models/genre');
+const auth = require('../middleware/auth');
 
 // GET REQUEST HANDLER
 router.get('/', async(req, res) => {
     const genres = await Genre.find().sort({ name : 1}).lean();
     res.send(genres);
-});
+});  
 
 // GET SPECIFIC ID REQUEST HANDLER
 router.get('/:id', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST REQUEST HANDLER
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     const result = validateInput(req.body);
     if (result.error) {
         // Bad Request = 400
