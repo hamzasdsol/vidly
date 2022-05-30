@@ -20,13 +20,13 @@ app.use('/api/rentals', rentals);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 
-if(!config.get('jwtPrivateKey')){
+if (!config.get('jwtPrivateKey')) {
     console.log('FATAL ERROR : jwtPrivateKey is not defined.')
     process.exit(1);
 }
 
-//const DB = 'mongodb+srv://vidlyuser:Sdsol99@cluster0.jhslu.mongodb.net/test?retryWrites=true&w=majority'
-const DB = 'mongodb://localhost/vidly'
+const DB = 'mongodb+srv://vidlyuser:Sdsol99@cluster0.jhslu.mongodb.net/test?retryWrites=true&w=majority'
+//const DB = 'mongodb://localhost/vidly'
 
 
 mongoose.connect(DB, {
