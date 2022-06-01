@@ -1,3 +1,4 @@
+const validateObjectId = require('../middleware/validateObjectId');
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -14,7 +15,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET SPECIFIC ID REQUEST HANDLER
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateObjectId, async (req, res) => {
     const genre = await Genre.findById(req.params.id);
     if (!genre) return res.status(404).send('ID Not found');
     res.send(genre);
@@ -53,7 +54,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE REQUEST HANDLER
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', validateObjectId, async (req, res) => {
     const genre = await Genre.findByIdAndRemove(req.params.id);
     if (!genre) return res.status(404).send('ID Not found');
 

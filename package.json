@@ -40,5 +40,8 @@
   "bugs": {
     "url": "https://github.com/hamzasdsol/vidly/issues"
   },
-  "homepage": "https://github.com/hamzasdsol/vidly#readme"
+  "homepage": "https://github.com/hamzasdsol/vidly#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
 }
